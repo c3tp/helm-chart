@@ -34,7 +34,7 @@ metadata:
   {{ if .Values.name }}namespace: {{ .Values.name }} {{ end }}
 type: Opaque
 data:
-  proxy.token: {{ default .Values.token.proxy .Values.proxy.secretToken | b64enc | quote }}
+  proxy.token: {{ default .Values.proxy.secretToken .Values.token.proxy | b64enc | quote }}
   hub.cookie-secret: {{ .Values.hub.cookieSecret | b64enc | quote }}
 ---
 kind: ConfigMap
