@@ -29,16 +29,14 @@ metadata:
   name: proxy-public
   {{ if .Values.name }}namespace: {{ .Values.name }} {{ end }}
 spec:
-  type: LoadBalancer
-  {{ if .Values.publicIP }}
-  loadBalancerIP: {{ .Values.publicIP }}
-  {{ end }}
+  type: NodePort
   selector:
     name: proxy-pod
   ports:
     - protocol: TCP
       port: 80
       targetPort: 8000
+      nodePort: 32221
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
