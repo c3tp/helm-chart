@@ -5,13 +5,14 @@ metadata:
   name: builder
   {{ if .Values.name }}namespace: {{ .Values.name }} {{ end }}
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     name: builder-pod
   ports:
     - protocol: TCP
       port: 80
       targetPort: 8585
+      nodePort: 32222
 ---
 kind: Secret
 apiVersion: v1

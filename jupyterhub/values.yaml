@@ -24,9 +24,10 @@ hub:
   db:
     type: sqlite-pvc
     storageClass:
-      provisioner: kubernetes.io/gce-pd
+      provisioner: kubernetes.io/cinder
       parameters:
-        type: pd-ssd
+        type: volumes_hdd
+        availability: nova
     url: null
   labels: null
   extraConfig: null
@@ -82,10 +83,10 @@ singleuser:
   storage:
     type: dynamic
     storageClass:
-      provisioner: kubernetes.io/gce-pd
+      provisioner: kubernetes.io/cinder
       parameters:
-        type: pd-ssd
-
+        type: volumes_hdd
+        availability: nova
     capacity: 10Gi
     homeMountPath: /home/jovyan
     # type: hostPath
