@@ -20,6 +20,7 @@ metadata:
   name: hub
   {{ if .Values.name }}namespace: {{ .Values.name }} {{ end }}
 spec:
+  type: NodePort
   selector:
     name: hub-pod
   ports:

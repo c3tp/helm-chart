@@ -16,6 +16,7 @@ metadata:
   name: proxy-api
   {{ if .Values.name }}namespace: {{ .Values.name }} {{ end }}
 spec:
+  type: NodePort
   selector:
     name: proxy-pod
   ports:
@@ -36,7 +37,6 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8000
-      nodePort: 32221
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
